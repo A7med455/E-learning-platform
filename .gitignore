@@ -1,0 +1,4 @@
+.idea/
+*.iml
+uploads/*
+!uploads/.gitkeep
