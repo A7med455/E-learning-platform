@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Lesson</title>
+    <link rel="stylesheet" href="wallet.css">
+</head>
+<body>
+<div class="container">
+    <h2>Add New Lesson</h2>
+    <form method="POST" action="php/addLesson.php" enctype="multipart/form-data">
+        <label>Course ID </label>
+        <input type="text" name="course_id" required>
+
+        <label>Lesson Title</label>
+        <input type="text" name="lesson_title" required>
+
+        <label>Lesson Type</label>
+        <select>
+            <option value="url">video url</option>
+            <option value="file">upload file</option>
+        </select>
+
+        <label>Video URL</label>
+        <input type="url" name="video_url" required>
+
+        <label>Upload Video</label>
+        <input type="file" name="video_file" accept="video/*">
+
+        <button type="submit">Add Lesson</button>
+    </form>
+</div>
+</div>
+</body>
+</html>
