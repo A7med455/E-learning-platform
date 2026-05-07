@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Manage Users — Admin</title>
+</head>
+<body>
+
+
+<nav>
+    <a href="../index.html">ELearningPlatform(placeholder)</a>
+    &nbsp;|&nbsp;
+    <a href="dashboard.html">Dashboard</a> <!--once done it will be clickable-->
+    &nbsp;|&nbsp;
+    <a href="users.html"><b>Users</b></a>
+    &nbsp;|&nbsp;
+    <a href="courses.html">Courses</a>
+    &nbsp;|&nbsp;
+    <a href="pending.html">Pending Courses</a> <!--once done it will be clickable-->
+    &nbsp;|&nbsp;
+    <a href="../php/logout.php">Log Out</a> <!--once done it will be clickable-->
+</nav>
+
+<hr />
+
+<h1>Manage Users</h1>
+<p>View and delete registered users on the platform.</p>
+
+<!--searching for users whether it may be their role-->
+<label for="search">Search by name or email:</label>
+<input type="text" id="search" placeholder="e.g. Mohsen or mohsen123@email.com" />
+&nbsp;
+<label for="role-filter">Filter by role:</label>
+<select id="role-filter">
+    <option value="all">All</option>
+    <option value="student">Student</option>
+    <option value="instructor">Instructor</option>
+    <option value="admin">Admin</option>
+</select>
+
+<br /><br />
+
+<!-- Users Table -->
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody id="users-table-body">
+    <tr>
+        <td colspan="7">Loading users...</td>
+    </tr>
+    </tbody>
+</table>
+
+<p id="error-msg" style="color:red;"></p>
+
+<hr />
+
+<footer>
+    <small>&copy; 2026 E-LearningPlatform. All rights reserved.</small>
+</footer>
+
+<script src="../js/admin.js"></script>
+
+</body>
+</html>
