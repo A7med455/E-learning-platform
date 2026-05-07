@@ -1,0 +1,133 @@
+/* ============================================
+   sign.css — Login & Signup Pages
+   Used by: login.html, signup.html
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+}
+
+/* ── Page Title ──────────────────────────────── */
+.H1 {
+    background-color: #1a3a8a;
+    text-align: center;
+    padding: 20px;
+}
+
+.H1 h1 {
+    color: white;
+    font-size: 26px;
+}
+
+/* ── Form Container ──────────────────────────── */
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+
+fieldset {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 30px 35px;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a3a8a;
+    padding: 0 10px;
+}
+
+/* ── Form Fields ─────────────────────────────── */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2e7cf6;
+    outline: none;
+}
+
+/* ── Buttons ─────────────────────────────────── */
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.form-buttons input[type="submit"] {
+    flex: 1;
+    background-color: #1a3a8a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.form-buttons input[type="submit"]:hover {
+    background-color: #2e7cf6;
+}
+
+.form-buttons input[type="reset"] {
+    flex: 1;
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* ── Link ────────────────────────────────────── */
+.Link {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.Link a {
+    color: #2e7cf6;
+    text-decoration: none;
+}
+
+.Link a:hover {
+    text-decoration: underline;
+}
+
+/* ── Error Message ───────────────────────────── */
+#error-msg {
+    font-size: 13px;
+    margin-top: 5px;
+}
