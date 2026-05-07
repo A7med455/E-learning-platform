@@ -8,7 +8,7 @@ $course_id=$_POST['course_id'];
 $title =mysqli_real_escape_string($conn,$_POST['title']);
 $type=$_POST['type'];
 
-$video_url=''
+$video_url='';
 $video_name = '';
 // if url selected
 if($type=='url'){
@@ -51,5 +51,4 @@ if(mysqli_query($conn,$query)){
     echo json_encode([
         'success'=>true,
         'message'=>'Database error'
-    ]);
-}
+    ]);}
