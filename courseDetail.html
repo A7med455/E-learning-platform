@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Course Detail – [ourname]</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<nav class="navbar">
+    <div class="container nav-container">
+        <a class="logo" href="index.html">[ourname]</a>
+        <ul class="nav-links">
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<section class="course-detail-section">
+    <div class="container" id="courseDetail">
+        <div class="loading-container">
+            <div class="spinner"></div>
+            <p>Loading course...</p>
+        </div>
+    </div>
+</section>
+<!--not sure how this doesnt use bootstrap -->
+<div class="toast-container">
+    <div id="toastMsg" class="toast-message">
+        <div id="toastText" class="toast-text"></div>
+        <button class="toast-close-btn" onclick="closeToast()">
+            ×
+        </button>
+    </div>
+</div>
+<footer class="footer">
+    <p>&copy; 2025 [ourname]. All rights reserved.</p>
+</footer>
+<script src="js/courseDetail.js"></script>
+</body>
+</html>
