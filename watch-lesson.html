@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Watch Lesson</title>
-    <link rel="stylesheet" href="wallet.css">
+
+    <!-- Correct CSS -->
+    <link rel="stylesheet" href="css/wallet.css">
 </head>
 <body>
+
 <div class="lesson-container">
-    <h2>Lesson Title</h2>
-    <div class="card">
-        <video controls>
-            <source src="lesson-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <br><br>
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Lesson title -->
+    <h2 id="lesson-title">Loading...</h2>
+
+    <div class="card" id="video-container">
+
+        <!-- JS will insert video OR iframe here -->
+
     </div>
+
 </div>
+
+<!-- Connect JS -->
+<script src="js/watch-lesson.js"></script>
+
 </body>
 </html>
