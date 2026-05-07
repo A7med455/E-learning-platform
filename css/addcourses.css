@@ -1,0 +1,145 @@
+/* ============================================
+   addcourses.css — Instructor Add Course Page
+   Used by: addcourses.html
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+    padding: 20px;
+}
+
+/* ── Simple Nav ──────────────────────────────── */
+nav {
+    background-color: #1a3a8a;
+    padding: 12px 20px;
+    margin: -20px -20px 20px -20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ── Page Title ──────────────────────────────── */
+h1 {
+    font-size: 24px;
+    color: #1a3a8a;
+    margin-bottom: 6px;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+/* ── Form ────────────────────────────────────── */
+form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 28px;
+    max-width: 520px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+    margin-top: 16px;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #2e7cf6;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ── Error / Success Messages ────────────────── */
+#form-error {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+#form-success {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* ── Buttons ─────────────────────────────────── */
+button[type="submit"] {
+    background-color: #1a3a8a;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 18px;
+    margin-right: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2e7cf6;
+}
+
+button[type="reset"] {
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+/* ── Footer Note ─────────────────────────────── */
+footer {
+    margin-top: 25px;
+    color: #888;
+    font-size: 13px;
+}
