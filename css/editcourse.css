@@ -1,0 +1,85 @@
+/* ============================================
+   editcourse.css — Instructor Edit Course
+   Used by: editcourse.html
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+    padding: 30px 20px;
+}
+
+/* ── Page Title ──────────────────────────────── */
+h1 {
+    font-size: 24px;
+    color: #1a3a8a;
+    margin-bottom: 20px;
+}
+
+/* ── Form ────────────────────────────────────── */
+form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 28px;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+    margin-top: 16px;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+textarea,
+select {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2e7cf6;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ── Submit Button ───────────────────────────── */
+button[type="submit"] {
+    background-color: #1a3a8a;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2e7cf6;
+}
