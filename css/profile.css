@@ -1,0 +1,157 @@
+/* ============================================
+   profile.css — User Profile Page
+   Used by: profile.html
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+    padding: 20px;
+}
+
+/* ── Simple Nav ──────────────────────────────── */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #1a3a8a;
+    padding: 12px 20px;
+    margin: -20px -20px 20px -20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+header nav span {
+    color: #aabfff;
+}
+
+header nav strong {
+    color: white;
+    font-size: 14px;
+}
+
+/* ── Page Title ──────────────────────────────── */
+main h1 {
+    font-size: 24px;
+    color: #1a3a8a;
+    margin-bottom: 6px;
+}
+
+main > p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ── Form ────────────────────────────────────── */
+form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 28px;
+    max-width: 480px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+
+input:focus {
+    border-color: #2e7cf6;
+    outline: none;
+}
+
+/* Read-only role display */
+#roleDisplay {
+    font-size: 14px;
+    color: #2e7cf6;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+/* ── Buttons ─────────────────────────────────── */
+button[type="submit"] {
+    background-color: #1a3a8a;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2e7cf6;
+}
+
+button[type="reset"] {
+    background-color: #eee;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* ── Message Area ────────────────────────────── */
+#messageArea {
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 480px;
+}
+
+/* ── Quick Links ─────────────────────────────── */
+#walletLinkBox a,
+#adminLinkBox a,
+#instructorLinkBox a {
+    color: #2e7cf6;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#walletLinkBox a:hover,
+#adminLinkBox a:hover,
+#instructorLinkBox a:hover {
+    text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────── */
+footer {
+    margin-top: 30px;
+    color: #888;
+    font-size: 13px;
+}
