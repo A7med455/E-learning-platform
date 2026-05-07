@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Course — Instructor</title>
+</head>
+<body>
+<nav>
+    <a href="../index.html">E-LearningPlatform</a>
+    &nbsp;|&nbsp;
+    <a href="dashboard.html">My Dashboard</a>
+    &nbsp;|&nbsp;
+    <a href="add-course.html"><b>Add Course</b></a>
+    &nbsp;|&nbsp;
+    <a href="../profile.html">Profile</a>
+    &nbsp;|&nbsp;
+    <a href="../php/logout.php">Log Out</a>
+</nav>
+
+<hr />
+
+<h1>Create a New Course</h1>
+<p>Fill in the details below. Your course will be submitted for admin approval before it goes live.</p>
+
+<hr />
+
+<!-- Add Course Form -->
+<form id="add-course-form">
+
+    <label for="title">Course Title *</label><br />
+    <input type="text" id="title" name="title" placeholder="e.g. Complete JavaScript Bootcamp" required />
+    <br /><br />
+
+    <label for="description">Description *</label><br />
+    <textarea id="description" name="description" rows="5" cols="50"
+              placeholder="What will students learn? What topics are covered?" required></textarea>
+    <br /><br />
+
+    <label for="category">Category *</label><br />
+    <select id="category" name="category" required>
+        <option value="">-- Select a category --</option> <!-- these are placeholders and not the final, once we agree on departments ill put it in-->
+        <option value="Web Development">Web Development</option>
+        <option value="Mobile Development">Mobile Development</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Machine Learning">Machine Learning</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+        <option value="Cloud Computing">Cloud Computing</option>
+        <option value="Databases">Databases</option>
+        <option value="Other">Other</option>
+    </select>
+    <br /><br />
+
+    <label for="price">Price (EGP) *</label><br />
+    <input type="number" id="price" name="price" min="0" step="0.01" placeholder="e.g. 299.99" required />
+    <br /><br />
+
+    <label for="image_url">Course Image URL</label><br />
+    <input type="url" id="image_url" name="image_url" placeholder="https://example.com/image.jpg" />
+    <br /><br />
+
+    <p id="form-error" style="color:red;"></p>
+    <p id="form-success" style="color:green;"></p>
+
+    <button type="submit">Submit Course for Approval</button>
+    &nbsp;
+    <button type="reset">Clear Form</button>
+
+</form>
+
+<hr />
+
+<p><small>* Required fields. Course status will be <b>pending</b> until an admin approves it.</small></p>
+
+<footer>
+    <small>&copy; 2026 E-LearningPlatform. All rights reserved.</small>
+</footer>
+
+<script src="../js/instructor.js"></script>
+
+</body>
+</html>
