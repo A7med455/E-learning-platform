@@ -1,0 +1,120 @@
+/* ============================================
+   wallet.css — Wallet, Add Lesson, Watch Lesson
+   Used by: wallet.html, addLesson.html,
+            watch-lesson.html
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4ff;
+    color: #333;
+    padding: 30px 20px;
+}
+
+/* ── Container ───────────────────────────────── */
+.container,
+.wallet-container,
+.lesson-container {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 24px;
+    color: #1a3a8a;
+    margin-bottom: 20px;
+}
+
+/* ── Card ────────────────────────────────────── */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card h4 {
+    font-size: 17px;
+    color: #1a3a8a;
+    margin-bottom: 15px;
+}
+
+/* ── Form Labels & Inputs ────────────────────── */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+    margin-top: 14px;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="month"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus,
+select:focus {
+    border-color: #2e7cf6;
+    outline: none;
+}
+
+/* ── Submit Button ───────────────────────────── */
+button[type="submit"],
+button {
+    display: block;
+    background-color: #1a3a8a;
+    color: white;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 18px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2e7cf6;
+}
+
+/* ── Balance Display (wallet.html) ───────────── */
+#balance {
+    font-size: 20px;
+    color: #1a3a8a;
+}
+
+/* ── Video Player (watch-lesson.html) ────────── */
+video {
+    width: 100%;
+    border-radius: 6px;
+    background-color: #000;
+}
+
+iframe {
+    width: 100%;
+    height: 340px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 15px;
+}
