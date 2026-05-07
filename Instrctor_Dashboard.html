@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="css/Instructor_Dashboard.css">
+</head>
+<body>
+<div class="sidebar">
+    <h2>📖 Instructor</h2>
+    <a href="Instrctor_Dashboard.html" class="active">📊 Dashboard</a>
+    <a href="addcourses.html">➕ Add Course</a>
+    <a href="editcourse.html">✏️ Edit Course</a>
+    <a href="profile.html">👤 Profile</a>
+    <a href="php/logout.php">🚪 Logout</a>
+</div>
+
+<div class="main-content">
+    <div class="header">
+        <h1>Welcome Back, Instructor!</h1>
+        <p>Manage your courses and students</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h2>4</h2>
+            <p>My Courses</p>
+        </div>
+        <div class="stat-card">
+            <h2>89</h2>
+            <p>Students</p>
+        </div>
+        <div class="stat-card">
+            <h2>1250 EGP</h2>
+            <p>Earnings</p>
+        </div>
+    </div>
+
+    <div class="course-list">
+        <h3>My Courses</h3>
+        <div class="course-item">
+            <div>
+                <strong>JavaScript Full Course</strong>
+                <span class="status pending">Pending</span>
+            </div>
+            <div>
+                <button class="btn btn-edit" onclick="location.href='edit-course.html'">Edit</button>
+                <button class="btn btn-delete">Delete</button>
+            </div>
+        </div>
+        <div class="course-item">
+            <div>
+                <strong>HTML & CSS</strong>
+                <span class="status approved">Approved</span>
+            </div>
+            <div>
+                <button class="btn btn-edit" onclick="location.href='edit-course.html'">Edit</button>
+                <button class="btn btn-delete">Delete</button>
+            </div>
+        </div>
+        <div class="course-item">
+            <div>
+                <strong>React.js</strong>
+                <span class="status pending">Pending</span>
+            </div>
+            <div>
+                <button class="btn btn-edit">Edit</button>
+                <button class="btn btn-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

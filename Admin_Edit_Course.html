@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Course</title>
+    <link rel="stylesheet" href="css/Edit_Course.css">
+</head>
+<body>
+<div class="sidebar">
+    <h2>✏️ Edit Course</h2>
+    <a href="Admin_Dashboard.html">📊 Dashboard</a>
+    <a href="add-course.html">➕ Add Course</a>
+    <a href="Admin_Edit_Course.html" class="active">✏️ Edit Course</a>
+    <a href="profile.html">👤 Profile</a>
+    <a href="php/logout.php">🚪 Logout</a>
+</div>
+
+<div class="main-content">
+    <div class="header">
+        <h1>Edit Course</h1>
+        <p>Update your course information</p>
+    </div>
+
+    <div class="form-box">
+        <label>Course Title</label>
+        <input type="text" value="JavaScript Full Course">
+
+        <label>Description</label>
+        <textarea rows="4">Learn JavaScript from scratch to advanced level with projects</textarea>
+
+        <label>Price (EGP)</label>
+        <input type="number" value="299">
+
+        <label>Category</label>
+        <select>
+            <option>Web Development</option>
+            <option selected>Programming</option>
+            <option>Data Science</option>
+            <option>Design</option>
+        </select>
+
+        <div class="buttons">
+            <button class="btn-save">💾 Save Changes</button>
+            <button class="btn-cancel" onclick="location.href='dashboard.html'">Cancel</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
