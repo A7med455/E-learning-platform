@@ -1,39 +1,36 @@
-// profile.js
+// Load profile data on page load
+document.addEventListener("DOMContentLoaded", function () {
 
-fetch('../php/get_profile.php')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        document.getElementById('fname').value = data.data.fname;
-        document.getElementById('lname').value = data.data.lname;
-        document.getElementById('email').value = data.data.email;
-        document.getElementById('age').value = data.data.age;
-        //2 datas because the php puts the user info in a 'data' key, so the first data is an object and the second is the key
-    });
-
-document.getElementById('profileForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var formData = new FormData();
-    formData.append('fname', document.getElementById('fname').value);
-    formData.append('lname', document.getElementById('lname').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('age', document.getElementById('age').value);
-    formData.append('password', document.getElementById('password').value);
-
-    fetch('../php/update_profile.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(function(response) {
+    // Load user data into the form
+    fetch('../php/get_profile.php')
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
-            if (data.success) {
-                alert('Profile updated');
-            } else {
-                alert(data.message);
+        .then(function (data) {
+            if (!data.success) {
+                document.getElementById('messageArea').innerHTML =
+                    '<p style="color:red;">Failed to load profile.</p>';
+                return;
+            }
+            document.getElementById('fname').value = data.data.fname;
+            document.getElementById('lname').value = data.data.lname;
+            document.getElementById('email').value = data.data.email;
+            document.getElementById('age').value = data.data.age;
+            document.getElementById('roleDisplay').innerText = data.data.role;
+
+            // Show relevant dashboard links based on role
+            if (data.data.role === 'student') {
+                document.getElementById('walletLinkBox').style.display = 'block';
+            }
+            if (data.data.role === 'admin') {
+                document.getElementById('adminLinkBox').style.display = 'block';
+            }
+            if (data.data.role === 'instructor') {
+                document.getElementById('instructorLinkBox').style.display = 'block';
             }
         });
 });
+
+// REMOVED: form submit event with fetch()
+// The form now submits directly to update_profile.php via action="..."
+// JS only loads data — no need to handle saving anymore
