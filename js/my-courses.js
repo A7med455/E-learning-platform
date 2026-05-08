@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    fetch('php/getmy-courses.php')
+    fetch('php/get_my_courses.php')
         .then(response => response.json())
         .then(data => {
 
