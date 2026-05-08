@@ -1,11 +1,9 @@
 <?php
-// FIXED: include paths
 include 'db.php';
 include 'session_guard.php';
 
-// instructors only
 if ($_SESSION['role'] !== 'instructor') {
-    header('Location: ../login.html');   // CHANGED
+    header('Location: ../login.html');
     exit;
 }
 
@@ -18,12 +16,12 @@ $image_url   = mysqli_real_escape_string($conn, trim($_POST['image_url'] ?? ''))
 $instructor_id = $_SESSION['user_id'];
 
 if ($course_id === 0 || empty($title) || empty($description) || empty($category) || $price === '') {
-    header('Location: ../instructor/edit-course.html?id=' . $course_id . '&error=fields');   // CHANGED
+    header('Location: ../editcourse.html?id=' . $course_id . '&error=fields');
     exit;
 }
 
 if (!is_numeric($price) || $price < 0) {
-    header('Location: ../instructor/edit-course.html?id=' . $course_id . '&error=price');   // CHANGED
+    header('Location: ../editcourse.html?id=' . $course_id . '&error=price');
     exit;
 }
 
@@ -31,7 +29,7 @@ $price = (float) $price;
 
 $check = mysqli_query($conn, "SELECT id FROM courses WHERE id = $course_id AND instructor_id = $instructor_id");
 if (!$check || mysqli_num_rows($check) === 0) {
-    header('Location: ../instructor/dashboard.html?error=not_found');   // CHANGED
+    header('Location: ../Instructor_Dashboard.html?error=not_found');
     exit;
 }
 
@@ -41,9 +39,9 @@ $sql = "UPDATE courses
         WHERE id = $course_id AND instructor_id = $instructor_id";
 
 if (mysqli_query($conn, $sql)) {
-    header('Location: ../instructor/dashboard.html?msg=updated');   // CHANGED
+    header('Location: ../Instructor_Dashboard.html?msg=updated');
 } else {
-    header('Location: ../instructor/edit-course.html?id=' . $course_id . '&error=failed');   // CHANGED
+    header('Location: ../editcourse.html?id=' . $course_id . '&error=failed');
 }
 exit;
 ?>
