@@ -1,28 +1,28 @@
 <?php
-session_start(); //starting the file
+session_start();
 include '../php/db.php';
 include '../php/session_guard.php';
-
-header('Content-Type: application/json');
 
 $user_id = $_SESSION['user_id'];
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
-$age = intval($_POST['age']); //ensures only numbers are inserted, otherwise it breaks
+$age = intval($_POST['age']);
 $password = $_POST['password'];
 
+// validation
 if (empty($fname) || empty($lname) || empty($email) || $age <= 0) {
-    echo json_encode(['success' => false, 'message' => 'All fields are required']); //validation
+    header('Location: ../profile.html?error=fields');   // CHANGED
     exit;
 }
 
 if (!empty($password) && strlen($password) < 6) {
-    echo json_encode(['success' => false, 'message' => 'Password must be at least 6 characters']); //more validation
+    header('Location: ../profile.html?error=password');   // CHANGED
     exit;
 }
 
+// update query
 if (!empty($password)) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $query = "UPDATE users SET fname='$fname', lname='$lname', email='$email', age=$age, password='$hashed_password' WHERE id=$user_id";
@@ -32,7 +32,9 @@ if (!empty($password)) {
 
 if (mysqli_query($conn, $query)) {
     $_SESSION['name'] = $fname . ' ' . $lname;
-    echo json_encode(['success' => true, 'message' => 'Profile updated successfully']);
+    header('Location: ../profile.html?msg=updated');   // CHANGED
 } else {
-    echo json_encode(['success' => false, 'message' => 'Failed to update profile']);
+    header('Location: ../profile.html?error=failed');   // CHANGED
 }
+exit;
+?>
