@@ -13,28 +13,27 @@ $password = $_POST['password'];
 
 // validation
 if (empty($fname) || empty($lname) || empty($email) || $age <= 0) {
-    header('Location: ../profile.html?error=fields');   // CHANGED
+    header('Location: ../profile.html?error=fields');
     exit;
 }
 
 if (!empty($password) && strlen($password) < 6) {
-    header('Location: ../profile.html?error=password');   // CHANGED
+    header('Location: ../profile.html?error=password');
     exit;
 }
 
-// update query
+// update query — plain password, no hash
 if (!empty($password)) {
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $query = "UPDATE users SET fname='$fname', lname='$lname', email='$email', age=$age, password='$hashed_password' WHERE id=$user_id";
+    $query = "UPDATE users SET fname='$fname', lname='$lname', email='$email', age=$age, password='$password' WHERE id=$user_id";
 } else {
     $query = "UPDATE users SET fname='$fname', lname='$lname', email='$email', age=$age WHERE id=$user_id";
 }
 
 if (mysqli_query($conn, $query)) {
     $_SESSION['name'] = $fname . ' ' . $lname;
-    header('Location: ../profile.html?msg=updated');   // CHANGED
+    header('Location: ../profile.html?msg=updated');
 } else {
-    header('Location: ../profile.html?error=failed');   // CHANGED
+    header('Location: ../profile.html?error=failed');
 }
 exit;
 ?>
