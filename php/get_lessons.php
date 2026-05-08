@@ -4,6 +4,15 @@ include 'session_guard.php';
 
 header('Content-Type: application/json');
 
+// FIXED: Only students can watch lessons
+if ($_SESSION['role'] !== 'student') {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Only students can watch lessons'
+    ]);
+    exit();
+}
+
 $user_id = $_SESSION['user_id'];
 $course_id = $_GET['course_id'] ?? 0;
 
@@ -33,7 +42,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $lessons[] = $row;
 }
 
-// RETURN JSON RESPONSE
 echo json_encode([
     'success' => true,
     'data' => $lessons

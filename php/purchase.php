@@ -4,13 +4,19 @@ include 'session_guard.php';
 
 $user_id = $_SESSION['user_id'];
 
-// check if course_id is passed
-if (!isset($_POST['course_id'])) {
-    header('Location: ../courses.html?error=missing');   // CHANGED: redirect instead of json
+// FIXED: Block instructors from buying
+if ($_SESSION['role'] !== 'student') {
+    header('Location: ../courses.html?error=not_allowed');
     exit;
 }
 
-$course_id = (int) $_POST['course_id'];   // CHANGED: cast to int instead of escape string
+// check if course_id is passed
+if (!isset($_POST['course_id'])) {
+    header('Location: ../courses.html?error=missing');
+    exit;
+}
+
+$course_id = (int) $_POST['course_id'];
 
 // check if already enrolled
 $check_sql = "SELECT * FROM enrollments
@@ -19,7 +25,7 @@ $check_sql = "SELECT * FROM enrollments
 $check_result = mysqli_query($conn, $check_sql);
 
 if (mysqli_num_rows($check_result) > 0) {
-    header('Location: ../course-detail.html?id=' . $course_id . '&error=already_enrolled');   // CHANGED
+    header('Location: ../course-detail.html?id=' . $course_id . '&error=already_enrolled');
     exit;
 }
 
@@ -28,7 +34,7 @@ $course_sql = "SELECT price FROM courses WHERE id = '$course_id'";
 $course_result = mysqli_query($conn, $course_sql);
 
 if (!$course = mysqli_fetch_assoc($course_result)) {
-    header('Location: ../courses.html?error=not_found');   // CHANGED
+    header('Location: ../courses.html?error=not_found');
     exit;
 }
 
@@ -42,7 +48,7 @@ $balance = $wallet['balance'];
 
 // check balance
 if ($balance < $price) {
-    header('Location: ../course-detail.html?id=' . $course_id . '&error=insufficient');   // CHANGED
+    header('Location: ../course-detail.html?id=' . $course_id . '&error=insufficient');
     exit;
 }
 
@@ -58,7 +64,6 @@ $enroll_sql = "INSERT INTO enrollments(user_id, course_id, enrolled_at)
                VALUES('$user_id', '$course_id', NOW())";
 mysqli_query($conn, $enroll_sql);
 
-// CHANGED: redirect to my-courses on success
 header('Location: ../my-courses.html?msg=purchased');
 exit;
 ?>
