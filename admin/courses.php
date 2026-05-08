@@ -15,9 +15,9 @@ include '../php/session_guard.php';
     <h2>All Courses</h2>
 
     <nav>
-        <a href="Admin_Dashboard.html">Dashboard</a> |
-        <a href="users.html">Users</a> |
-        <a href="adminpending.html">Pending</a> |
+        <a href="../Admin_Dashboard.html">Dashboard</a> |
+        <a href="../users.html">Users</a> |
+        <a href="../adminpending.html">Pending</a> |
         <a href="../php/logout.php">Logout</a>
     </nav>
 

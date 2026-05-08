@@ -15,32 +15,44 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadDashboard(){
-    fetch("php/get_courses.php")                           // FIXED
+    fetch("php/get_courses.php")
         .then(response => response.json())
         .then(data => {
             if(!data.success) return;
-            const container=document.getElementById("courseList");
-            container.innerHTML="";
+            const container = document.getElementById("courseList");
+            container.innerHTML = "";
+
+            document.getElementById("course-count").innerText = data.data.length;
+
             data.data.forEach(course => {
-                const card=document.createElement("div");
-                card.classList.add("card");
-                card.innerHTML=`
-            <h3>${course.title}</h3>
-            <p>Status: ${course.status}</p>
-            <button onclick="goEdit(${course.id})">Edit</button>
-        `;
-                container.appendChild(card);
+                const div = document.createElement("div");
+                div.classList.add("course-item");
+                div.innerHTML = `
+                    <div>
+                        <strong>${course.title}</strong>
+                        <span class="status ${course.status}">${course.status}</span>
+                    </div>
+                    <div>
+                        <a href="addLesson.html" class="btn btn-edit" style="text-decoration:none;font-size:13px;">+ Lesson</a>
+                        <button class="btn btn-edit" onclick="goEdit(${course.id})">Edit</button>
+                        <form method="POST" action="php/deleteCourse.php" style="display:inline;" onsubmit="return confirm('Delete this course?')">
+                            <input type="hidden" name="course_id" value="${course.id}">
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </div>
+                `;
+                container.appendChild(div);
             });
         })
-        .catch(()=> alert("Failed to load courses"));
+        .catch(() => alert("Failed to load courses"));
 }
 
 function handleAddCourse(){
-    const form=document.getElementById("add-course-form");
+    const form = document.getElementById("add-course-form");
     form.addEventListener("submit", function(e){
-        const title=form.title.value.trim();
-        const description=form.description.value.trim();
-        const price=form.price.value.trim();
+        const title = form.title.value.trim();
+        const description = form.description.value.trim();
+        const price = form.price.value.trim();
 
         if(!title || !description || !price){
             e.preventDefault();
@@ -51,10 +63,10 @@ function handleAddCourse(){
 }
 
 function loadCourseData(){
-    const params=new URLSearchParams(window.location.search);
-    const id=params.get("id");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
     if(!id) return;
-    fetch("php/get_course.php?id=" + id)                    // FIXED
+    fetch("php/get_course.php?id=" + id)
         .then(response => response.json())
         .then(data => {
             if(!data.success) return;
@@ -68,11 +80,11 @@ function loadCourseData(){
 }
 
 function handleEditCourse(){
-    const form=document.getElementById("edit-course-form");
+    const form = document.getElementById("edit-course-form");
     form.addEventListener("submit", function(e){
-        const title=form.title.value.trim();
-        const description=form.description.value.trim();
-        const price=form.price.value.trim();
+        const title = form.title.value.trim();
+        const description = form.description.value.trim();
+        const price = form.price.value.trim();
 
         if(!title || !description || !price){
             e.preventDefault();
@@ -83,9 +95,9 @@ function handleEditCourse(){
 }
 
 function handleAddLesson(){
-    const form=document.getElementById("lessonForm");
+    const form = document.getElementById("lessonForm");
     form.addEventListener("submit", function(e){
-        const title=form.title.value.trim();
+        const title = form.title.value.trim();
         const type = form.type.value;
         const url = form.video_url.value.trim();
         const file = form.video_file.files[0];
