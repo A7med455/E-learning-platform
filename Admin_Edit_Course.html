@@ -9,10 +9,10 @@
 <div class="sidebar">
     <h2>✏️ Edit Course</h2>
     <a href="Admin_Dashboard.html">📊 Dashboard</a>
-    <a href="add-course.html">➕ Add Course</a>
+    <a href="addcourses.html">➕ Add Course</a>
     <a href="Admin_Edit_Course.html" class="active">✏️ Edit Course</a>
-    <a href="profile.html">👤 Profile</a>
-    <a href="php/logout.php">🚪 Logout</a>
+    <a href="../profile.html">👤 Profile</a>
+    <a href="../php/logout.php">🚪 Logout</a>
 </div>
 
 <div class="main-content">
@@ -22,27 +22,32 @@
     </div>
 
     <div class="form-box">
-        <label>Course Title</label>
-        <input type="text" value="JavaScript Full Course">
+        <!-- FIXED: wrapped in form with action and method -->
+        <form action="../php/edit_course.php" method="POST">
+            <input type="hidden" name="course_id" value="">
 
-        <label>Description</label>
-        <textarea rows="4">Learn JavaScript from scratch to advanced level with projects</textarea>
+            <label>Course Title</label>
+            <input type="text" name="title" value="JavaScript Full Course">
 
-        <label>Price (EGP)</label>
-        <input type="number" value="299">
+            <label>Description</label>
+            <textarea name="description" rows="4">Learn JavaScript from scratch to advanced level with projects</textarea>
 
-        <label>Category</label>
-        <select>
-            <option>Web Development</option>
-            <option selected>Programming</option>
-            <option>Data Science</option>
-            <option>Design</option>
-        </select>
+            <label>Price (EGP)</label>
+            <input type="number" name="price" value="299">
 
-        <div class="buttons">
-            <button class="btn-save">💾 Save Changes</button>
-            <button class="btn-cancel" onclick="location.href='dashboard.html'">Cancel</button>
-        </div>
+            <label>Category</label>
+            <select name="category">
+                <option>Web Development</option>
+                <option selected>Programming</option>
+                <option>Data Science</option>
+                <option>Design</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" class="btn-save">💾 Save Changes</button>
+                <button type="button" class="btn-cancel" onclick="location.href='Admin_Dashboard.html'">Cancel</button>
+            </div>
+        </form>
     </div>
 </div>
 </body>
