@@ -2,9 +2,8 @@
 include 'db.php';
 include 'session_guard.php';
 
-// only instructors can add lessons
 if ($_SESSION['role'] !== 'instructor') {
-    header('Location: ../login.html');   // CHANGED
+    header('Location: ../login.html');
     exit;
 }
 
@@ -15,19 +14,17 @@ $type = $_POST['type'];
 $video_url = '';
 $video_name = '';
 
-// if url selected
 if ($type == 'url') {
-    if (empty($_POST['video_url'])) {   // FIXED: was 'videp_url'
-        header('Location: ../instructor/add-lesson.html?error=url_required');   // CHANGED
+    if (empty($_POST['video_url'])) {
+        header('Location: ../addLesson.html?error=url_required');
         exit;
     }
     $video_url = mysqli_real_escape_string($conn, $_POST['video_url']);
 }
 
-// if file selected
 if ($type == 'file') {
     if (empty($_FILES['video_file']['name'])) {
-        header('Location: ../instructor/add-lesson.html?error=file_required');   // CHANGED
+        header('Location: ../addLesson.html?error=file_required');
         exit;
     }
     $file_name = $_FILES['video_file']['name'];
@@ -37,19 +34,18 @@ if ($type == 'file') {
     if (move_uploaded_file($tmp_name, $target)) {
         $video_name = $file_name;
     } else {
-        header('Location: ../instructor/add-lesson.html?error=upload_failed');   // CHANGED
+        header('Location: ../addLesson.html?error=upload_failed');
         exit;
     }
 }
 
-// insert lesson
 $query = "INSERT INTO lessons (course_id, title, video_url, video_name)
           VALUES ('$course_id', '$title', '$video_url', '$video_name')";
 
 if (mysqli_query($conn, $query)) {
-    header('Location: ../instructor/dashboard.html?msg=lesson_added');   // CHANGED: was "Database error" message
+    header('Location: ../Instructor_Dashboard.html?msg=lesson_added');
 } else {
-    header('Location: ../instructor/add-lesson.html?error=failed');   // CHANGED
+    header('Location: ../addLesson.html?error=failed');
 }
 exit;
 ?>
