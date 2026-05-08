@@ -1,8 +1,7 @@
 // Load profile data on page load
 document.addEventListener("DOMContentLoaded", function () {
 
-    // FIXED: path
-    fetch('php/get_profile.php')
+    fetch('php/getProfile.php')
         .then(function (response) {
             return response.json();
         })
