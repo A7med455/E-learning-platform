@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css/profile.css"/>
 <head>
-  <meta charset="UTF-8">
-  <title>Profile - E-Learning Platform</title>
+    <meta charset="UTF-8">
+    <title>Profile - E-Learning Platform</title>
+    <link rel="stylesheet" href="css/profile.css"/>
 </head>
 <body>
 
 <!-- Header / Navigation -->
 <header>
-  <nav>
-    <a href="home.html">Home</a>
-    <span>|</span>
-    <strong>Profile</strong>
-    <span>|</span>
-    <a href="courses.html">Courses</a> <!--still being made-->
-    <span>|</span>
-    <a href="#" id="logoutLink">Logout</a> <!--still being made-->
-  </nav>
-  <hr>
+    <nav>
+        <a href="home.html">Home</a>
+        <span>|</span>
+        <strong>Profile</strong>
+        <span>|</span>
+        <a href="courses.html">Courses</a>
+        <span>|</span>
+        <a href="php/logout.php" id="logoutLink">Logout</a>
+    </nav>
+    <hr>
 </header>
 
 <!-- Main Profile Section -->
 <main>
-  <h1>My Profile</h1>
-  <p>View and edit your personal information below.</p>
+    <h1>My Profile</h1>
+    <p>View and edit your personal information below.</p>
 
-  <!-- Profile Form (fields will be filled by profile.js using get_profile.php) -->
-  <form id="profileForm" method="post" action="php/update_profile.php">
+    <!-- CHANGED: added action and method -->
+    <form id="profileForm" action="php/update_profile.php" method="POST">
 
-    <!-- First Name -->
-    <label for="fname">First Name:</label>
-    <input type="text" id="fname" name="fname" required>
-    <br><br>
+        <!-- First Name -->
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+        <br><br>
 
-    <!-- Last Name -->
-    <label for="lname">Last Name:</label>
-    <input type="text" id="lname" name="lname" required>
-    <br><br>
+        <!-- Last Name -->
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
+        <br><br>
 
-    <!-- Email (read-only, identitfies the user) -->
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-    <br><br>
+        <!-- Email (read-only, identifies the user) -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <br><br>
 
-    <!-- Age -->
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" min="10" max="100">
-    <br><br>
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="10" max="100">
+        <br><br>
 
-    <!-- Password (optional change) -->
-    <label for="password">New Password (leave empty to keep current):</label>
-    <input type="password" id="password" name="password" placeholder="Enter new password">
-    <br><br>
+        <!-- Password (optional change) -->
+        <label for="password">New Password (leave empty to keep current):</label>
+        <input type="password" id="password" name="password" placeholder="Enter new password">
+        <br><br>
 
-    <!-- shows role, cant be modified-->
-    <label>Role:</label>
-    <span id="roleDisplay">---</span>
-    <br><br>
+        <!-- shows role, cant be modified -->
+        <label>Role:</label>
+        <span id="roleDisplay">---</span>
+        <br><br>
 
-    <!-- Buttons -->
-    <button type="submit" id="saveProfileBtn">Save Changes</button>
-    <button type="reset" id="cancelBtn">Reset</button>
-  </form>
+        <!-- Buttons -->
+        <button type="submit" id="saveProfileBtn">Save Changes</button>
+        <button type="reset" id="cancelBtn">Reset</button>
+    </form>
 
-  <!-- Success/Error message area -->
-  <div id="messageArea" style="margin-top: 20px;"></div>
+    <!-- Success/Error message area -->
+    <div id="messageArea" style="margin-top: 20px;"></div>
 
-  <hr>
+    <hr>
 
-  <!-- Wallet quick link for students only (hidden by default, shown by js) -->
-  <div id="walletLinkBox" style="display: none;">
-    <p><a href="wallet.html">Go to My Wallet</a></p>
-  </div>
+    <!-- Wallet quick link for students only (hidden by default, shown by js) -->
+    <div id="walletLinkBox" style="display: none;">
+        <p><a href="wallet.html">Go to My Wallet</a></p>
+    </div>
 
-  <!-- Admin/Instructor quick links (optional structural hint) -->
-  <div id="adminLinkBox" style="display: none;">
-    <p><a href="admin/dashboard.html">Admin Dashboard</a></p>
-  </div>
-  <div id="instructorLinkBox" style="display: none;">
-    <p><a href="instructor/dashboard.html">Instructor Dashboard</a></p>
-  </div>
+    <!-- Admin/Instructor quick links -->
+    <div id="adminLinkBox" style="display: none;">
+        <p><a href="admin/Admin_Dashboard.html">Admin Dashboard</a></p>
+    </div>
+    <div id="instructorLinkBox" style="display: none;">
+        <p><a href="Instrctor_Dashboard.html">Instructor Dashboard</a></p>
+    </div>
 
 </main>
 
 <!-- Footer -->
 <footer>
-  <hr>
-  <p>&copy; 2026 E-Learning Platform. All rights reserved.</p>
+    <hr>
+    <p>&copy; 2026 E-Learning Platform. All rights reserved.</p>
 </footer>
+
+<script src="js/profile.js"></script>
 
 </body>
 </html>
