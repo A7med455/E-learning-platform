@@ -11,9 +11,8 @@
     <h2 style="color:white; margin-bottom:30px;">📚 Admin Panel</h2>
     <a href="Admin_Dashboard.html" class="active">📊 Dashboard</a>
     <a href="users.html">👥 Users</a>
-    <a href="courses.html">📖 Courses</a>
+    <a href="admin/courses.php">📖 Courses</a>
     <a href="adminpending.html">⏳ Pending</a>
-    <!-- FIXED: paths -->
     <a href="profile.html">⚙️ Profile</a>
     <a href="php/logout.php">🚪 Logout</a>
 </div>
@@ -26,36 +25,31 @@
 
     <div class="stats">
         <div class="stat-card">
-            <h2>150</h2>
+            <h2 id="student-count">--</h2>
             <p>Students</p>
         </div>
         <div class="stat-card">
-            <h2>12</h2>
+            <h2 id="instructor-count">--</h2>
             <p>Instructors</p>
         </div>
         <div class="stat-card">
-            <h2>45</h2>
+            <h2 id="course-count">--</h2>
             <p>Courses</p>
         </div>
         <div class="stat-card">
-            <h2>5</h2>
+            <h2 id="pending-count">--</h2>
             <p>Pending</p>
         </div>
     </div>
 
     <div class="table-card">
         <h3>Recent Courses</h3>
-        <table>
-            <thead>
-            <tr><th>Course</th><th>Instructor</th><th>Status</th></tr>
-            </thead>
-            <tbody>
-            <tr><td>Web Development</td><td>Ahmed</td><td><span class="status approved">Approved</span></td></tr>
-            <tr><td>Python Basics</td><td>Sara</td><td><span class="status pending">Pending</span></td></tr>
-            <tr><td>JavaScript</td><td>Mohamed</td><td><span class="status approved">Approved</span></td></tr>
-            </tbody>
-        </table>
+        <div id="recent-courses">
+            <p>Loading...</p>
+        </div>
     </div>
 </div>
+
+<script src="js/admin.js"></script>
 </body>
 </html>

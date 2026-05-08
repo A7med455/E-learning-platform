@@ -1,26 +1,105 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Load all users: fetch admin_get_users.php → render table
+    // Load admin dashboard stats
+    if (document.getElementById("student-count")) {
+        loadDashboardStats();
+        loadRecentCourses();
+    }
+
+    // Load all users
     if (document.getElementById("users-table-body")) {
         loadUsers();
         document.getElementById("search").addEventListener("input", loadUsers);
         document.getElementById("role-filter").addEventListener("change", loadUsers);
     }
 
-    // Load pending courses: fetch get_courses with status filter
+    // Load pending courses
     if (document.getElementById("pending-container")) {
         loadPendingCourses();
     }
 });
 
 
-// ── Load all users → render table ─────────────────────────────
+// ── Load dashboard stats ─────────────────────────────
+
+function loadDashboardStats() {
+    fetch("admin/admin_get_users.php?role=student")
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("student-count").innerText = data.data.length;
+            }
+        });
+
+    fetch("admin/admin_get_users.php?role=instructor")
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("instructor-count").innerText = data.data.length;
+            }
+        });
+
+    fetch("php/get_courses.php")
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("course-count").innerText = data.data.length;
+            }
+        });
+
+    fetch("php/get_courses.php?status=pending")
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("pending-count").innerText = data.data.length;
+            }
+        });
+}
+
+// ── Load recent courses ──────────────────────────────
+
+function loadRecentCourses() {
+    fetch("php/get_courses.php")
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById("recent-courses");
+            if (!data.success || data.data.length === 0) {
+                container.innerHTML = "<p>No courses yet.</p>";
+                return;
+            }
+
+            const recent = data.data.slice(0, 5);
+
+            let tableHTML = `
+                <table>
+                    <thead>
+                        <tr><th>Course</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            recent.forEach(course => {
+                tableHTML += `
+                    <tr>
+                        <td>${course.title}</td>
+                        <td><span class="status ${course.status}">${course.status}</span></td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `</tbody></table>`;
+            container.innerHTML = tableHTML;
+        })
+        .catch(err => console.error(err));
+}
+
+
+// ── Load all users → render table ─────────────────────
 
 function loadUsers() {
     const search = document.getElementById("search").value.trim();
     const role   = document.getElementById("role-filter").value;
 
-    // FIXED: admin files are in admin/ folder, not php/
     fetch("admin/admin_get_users.php?search=" + search + "&role=" + role)
         .then(res => res.json())
         .then(data => {
@@ -45,7 +124,6 @@ function loadUsers() {
                     <td>${user.role}</td>
                     <td>${user.status == 1 ? "Active" : "Inactive"}</td>
                     <td>
-                        <!-- FIXED: delete using form POST instead of fetch -->
                         <form method="POST" action="admin/admin_delete_user.php" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?')">
                             <input type="hidden" name="user_id" value="${user.id}">
                             <button type="submit" class="btn-delete">Delete</button>
@@ -58,7 +136,7 @@ function loadUsers() {
 }
 
 
-// ── Load pending courses: fetch get_courses with status filter ─
+// ── Load pending courses ──────────────────────────────
 
 function loadPendingCourses() {
     fetch("php/get_courses.php?status=pending")
@@ -75,7 +153,6 @@ function loadPendingCourses() {
                 <div class="course-card" id="pending-card-${course.id}">
                     <h3>${course.title}</h3>
                     <p>${course.description}</p>
-                    <!-- FIXED: approve/reject using forms instead of fetch -->
                     <form method="POST" action="admin/admin_approve.php" style="display:inline;">
                         <input type="hidden" name="course_id" value="${course.id}">
                         <input type="hidden" name="status" value="approved">
