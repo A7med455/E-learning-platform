@@ -15,3 +15,6 @@ if (mysqli_num_rows($result) === 1) {
     echo json_encode(['success' => true, 'data' => $user]);
 } else {
     echo json_encode(['success' => false, 'message' => 'User not found']);
+    // FIXED: missing closing brace was here — now it's below
+}
+?>
