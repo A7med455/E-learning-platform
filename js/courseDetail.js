@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     loadCourse(courseId);
 });
+
 function loadCourse(id) {
     fetch(`php/get_course.php?id=${id}`)
         .then(response => response.json())
@@ -23,6 +24,7 @@ function loadCourse(id) {
             console.error('Error loading course:', error);
         });
 }
+
 function renderCourse(course) {
     const image = course.image_url
         ? course.image_url
@@ -42,9 +44,13 @@ function renderCourse(course) {
         <div class="card border-0 shadow p-4">
           <h3 class="fw-bold text-primary mb-1">${price}</h3>
           <p class="text-muted small mb-3">One-time payment. Lifetime access.</p>
-          <button class="btn btn-primary w-100 mb-2" onclick="purchaseCourse(${course.id})">
-            Enroll Now
-          </button>
+          <!-- CHANGED: form submits directly to purchase.php -->
+          <form action="php/purchase.php" method="POST">
+              <input type="hidden" name="course_id" value="${course.id}">
+              <button type="submit" class="btn btn-primary w-100 mb-2">
+                  Enroll Now
+              </button>
+          </form>
           <a href="courses.html" class="btn btn-outline-secondary w-100">Back to Courses</a>
           <hr/>
           <ul class="list-unstyled small text-muted">
@@ -57,32 +63,6 @@ function renderCourse(course) {
     </div>
   `;
 }
-function purchaseCourse(courseId) {
-    const formData = new FormData();
-    formData.append('course_id', courseId);
-    fetch('php/purchase.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                showToast('Enrolled successfully! Go to My Courses to start learning.', 'bg-success');
-            } else {
-                showToast(data.message || 'Could not complete purchase.', 'bg-danger');
-            }
-        })
-        .catch(error => {
-            console.error('Purchase error:', error);
-            showToast('Something went wrong. Try again.', 'bg-danger');
-        });
-}
-//pop up noti//
-function showToast(message, bgClass) {
-    const toastEl = document.getElementById('toastMsg');
-    const toastText = document.getElementById('toastText');
-    toastEl.className = `toast align-items-center text-white border-0 ${bgClass}`;
-    toastText.textContent = message;
-    const toast = new bootstrap.Toast(toastEl);
-    toast.show();
-}
+
+// REMOVED: purchaseCourse() function — form handles it now
+// REMOVED: showToast() function — not needed
