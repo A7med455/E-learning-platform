@@ -8,8 +8,8 @@
 <body>
 <div class="container">
     <h2>Add New Lesson</h2>
-    <!-- CHANGED: added action and method -->
-    <form id="lessonForm" action="../php/add_lesson.php" method="POST" enctype="multipart/form-data">
+    <!-- FIXED: action path -->
+    <form id="lessonForm" action="php/addLesson.php" method="POST" enctype="multipart/form-data">
 
         <label>Course ID</label>
         <input type="text" name="course_id" required>
@@ -17,20 +17,17 @@
         <label>Lesson Title</label>
         <input type="text" name="title" required>
 
-        <!-- CHANGED: added name and id so JS can toggle -->
         <label>Lesson Type</label>
         <select name="type" id="lessonType">
             <option value="url">Video URL</option>
             <option value="file">Upload File</option>
         </select>
 
-        <!-- URL input (shown by default) -->
         <div id="urlSection">
             <label>Video URL</label>
             <input type="url" name="video_url">
         </div>
 
-        <!-- File input (hidden by default) -->
         <div id="fileSection" style="display:none;">
             <label>Upload Video</label>
             <input type="file" name="video_file" accept="video/*">
@@ -41,7 +38,6 @@
 </div>
 
 <script>
-    // ADDED: toggle between URL and file upload
     document.getElementById('lessonType').addEventListener('change', function() {
         if (this.value === 'url') {
             document.getElementById('urlSection').style.display = 'block';
