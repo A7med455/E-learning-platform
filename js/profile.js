@@ -1,8 +1,8 @@
 // Load profile data on page load
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Load user data into the form
-    fetch('../php/get_profile.php')
+    // FIXED: path
+    fetch('php/get_profile.php')
         .then(function (response) {
             return response.json();
         })
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('age').value = data.data.age;
             document.getElementById('roleDisplay').innerText = data.data.role;
 
-            // Show relevant dashboard links based on role
             if (data.data.role === 'student') {
                 document.getElementById('walletLinkBox').style.display = 'block';
             }
@@ -30,7 +29,3 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 });
-
-// REMOVED: form submit event with fetch()
-// The form now submits directly to update_profile.php via action="..."
-// JS only loads data — no need to handle saving anymore
