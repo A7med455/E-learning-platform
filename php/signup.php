@@ -2,8 +2,6 @@
 session_start();
 include 'db.php';
 
-header('Content-Type: application/json');  // ADDED: so JS can read the response
-
 $fname    = $_POST['fname'];
 $lname    = $_POST['lname'];
 $age      = $_POST['age'];
@@ -16,11 +14,12 @@ $check  = "SELECT * FROM users WHERE email = '$email'";
 $result = mysqli_query($conn, $check);
 
 if (mysqli_num_rows($result) > 0) {
-    echo json_encode(['success' => false, 'message' => 'Email already used.']);
+    // CHANGED: redirect back to signup with error
+    header('Location: ../signup.html?error=email');
     exit;
 }
 
-// save user directly with plain password
+// save user
 $sql = "INSERT INTO users (fname, lname, age, email, password, role, status)
         VALUES ('$fname', '$lname', '$age', '$email', '$password', '$role', 1)";
 
@@ -32,5 +31,7 @@ if ($role === 'student') {
     mysqli_query($conn, "INSERT INTO wallets (user_id, balance) VALUES ('$userId', 0)");
 }
 
-echo json_encode(['success' => true]);
+// CHANGED: redirect to login page on success
+header('Location: ../login.html?msg=signup_success');
+exit;
 ?>
