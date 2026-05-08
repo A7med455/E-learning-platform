@@ -9,9 +9,9 @@
 <nav>
     <a href="../index.html">E-LearningPlatform</a>
     &nbsp;|&nbsp;
-    <a href="dashboard.html">My Dashboard</a>
+    <a href="Instrctor_Dashboard.html">My Dashboard</a>
     &nbsp;|&nbsp;
-    <a href="add-course.html"><b>Add Course</b></a>
+    <a href="addcourses.html"><b>Add Course</b></a>
     &nbsp;|&nbsp;
     <a href="../profile.html">Profile</a>
     &nbsp;|&nbsp;
@@ -25,8 +25,8 @@
 
 <hr />
 
-<!-- Add Course Form -->
-<form id="add-course-form">
+<!-- FIXED: added action and method -->
+<form id="add-course-form" action="../php/add_course.php" method="POST">
 
     <label for="title">Course Title *</label><br />
     <input type="text" id="title" name="title" placeholder="e.g. Complete JavaScript Bootcamp" required />
@@ -39,7 +39,7 @@
 
     <label for="category">Category *</label><br />
     <select id="category" name="category" required>
-        <option value="">-- Select a category --</option> <!-- these are placeholders and not the final, once we agree on departments ill put it in-->
+        <option value="">-- Select a category --</option>
         <option value="Web Development">Web Development</option>
         <option value="Mobile Development">Mobile Development</option>
         <option value="Data Science">Data Science</option>
