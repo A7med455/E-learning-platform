@@ -2,11 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if(document.getElementById("courseList")){
         loadDashboard();
     }
-    // FIXED: form ID matches HTML
     if(document.getElementById("add-course-form")){
         handleAddCourse();
     }
-    // FIXED: form ID matches HTML
     if(document.getElementById("edit-course-form")){
         loadCourseData();
         handleEditCourse();
@@ -17,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadDashboard(){
-    fetch("../php/get_courses.php")
+    fetch("php/get_courses.php")                           // FIXED
         .then(response => response.json())
         .then(data => {
             if(!data.success) return;
@@ -37,7 +35,6 @@ function loadDashboard(){
         .catch(()=> alert("Failed to load courses"));
 }
 
-// FIXED: form now submits normally, JS only validates
 function handleAddCourse(){
     const form=document.getElementById("add-course-form");
     form.addEventListener("submit", function(e){
@@ -50,7 +47,6 @@ function handleAddCourse(){
             alert("All fields are required");
             return;
         }
-        // if valid, form submits to add_course.php automatically
     });
 }
 
@@ -58,8 +54,7 @@ function loadCourseData(){
     const params=new URLSearchParams(window.location.search);
     const id=params.get("id");
     if(!id) return;
-    // FIXED: comma changed to dot
-    fetch(`../php/get_course.php?id=${id}`)
+    fetch("php/get_course.php?id=" + id)                    // FIXED
         .then(response => response.json())
         .then(data => {
             if(!data.success) return;
@@ -72,7 +67,6 @@ function loadCourseData(){
         });
 }
 
-// FIXED: form now submits normally, JS only validates
 function handleEditCourse(){
     const form=document.getElementById("edit-course-form");
     form.addEventListener("submit", function(e){
@@ -85,11 +79,9 @@ function handleEditCourse(){
             alert("All fields are required");
             return;
         }
-        // if valid, form submits to edit_course.php automatically
     });
 }
 
-// FIXED: form now submits normally, JS only validates
 function handleAddLesson(){
     const form=document.getElementById("lessonForm");
     form.addEventListener("submit", function(e){
@@ -113,10 +105,9 @@ function handleAddLesson(){
             alert("Video file is required");
             return;
         }
-        // if valid, form submits to add_lesson.php automatically
     });
 }
 
 function goEdit(id){
-    window.location.href = `editcourse.html?id=${id}`;
+    window.location.href = "editcourse.html?id=" + id;
 }
