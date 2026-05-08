@@ -1,7 +1,8 @@
 <?php
 session_start();
-include '../php/db.php';
-include '../php/session_guard.php';
+// FIXED: include paths
+include 'db.php';
+include 'session_guard.php';
 
 $user_id = $_SESSION['user_id'];
 
@@ -11,7 +12,6 @@ $email = $_POST['email'];
 $age = intval($_POST['age']);
 $password = $_POST['password'];
 
-// validation
 if (empty($fname) || empty($lname) || empty($email) || $age <= 0) {
     header('Location: ../profile.html?error=fields');
     exit;
@@ -22,7 +22,6 @@ if (!empty($password) && strlen($password) < 6) {
     exit;
 }
 
-// update query — plain password, no hash
 if (!empty($password)) {
     $query = "UPDATE users SET fname='$fname', lname='$lname', email='$email', age=$age, password='$password' WHERE id=$user_id";
 } else {
