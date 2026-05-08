@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('lname').value = data.data.lname;
             document.getElementById('email').value = data.data.email;
             document.getElementById('age').value = data.data.age;
-            document.getElementById('roleDisplay').innerText = data.data.role;
 
             if (data.data.role === 'student') {
                 document.getElementById('walletLinkBox').style.display = 'block';
