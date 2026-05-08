@@ -1,14 +1,11 @@
 <?php
-
 include 'db.php';
 include 'session_guard.php';
 
 header('Content-Type: application/json');
 
 $user_id = $_SESSION['user_id'];
-
 $course_id = $_GET['course_id'] ?? 0;
-
 
 // CHECK IF STUDENT IS ENROLLED
 $check = mysqli_query($conn,
@@ -30,15 +27,15 @@ $result = mysqli_query($conn,
     "SELECT * FROM lessons
      WHERE course_id = '$course_id'"
 );
+
 $lessons = [];
 while ($row = mysqli_fetch_assoc($result)) {
-
     $lessons[] = $row;
 }
+
 // RETURN JSON RESPONSE
 echo json_encode([
     'success' => true,
     'data' => $lessons
 ]);
-
 ?>
