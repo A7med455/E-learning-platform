@@ -20,7 +20,8 @@ function loadUsers() {
     const search = document.getElementById("search").value.trim();
     const role   = document.getElementById("role-filter").value;
 
-    fetch("php/admin_get_users.php?search=" + search + "&role=" + role)
+    // FIXED: admin files are in admin/ folder, not php/
+    fetch("admin/admin_get_users.php?search=" + search + "&role=" + role)
         .then(res => res.json())
         .then(data => {
             const tbody = document.getElementById("users-table-body");
@@ -43,30 +44,15 @@ function loadUsers() {
                     <td>${user.age}</td>
                     <td>${user.role}</td>
                     <td>${user.status == 1 ? "Active" : "Inactive"}</td>
-                    <td><button onclick="deleteUser(${user.id})">Delete</button></td>
+                    <td>
+                        <!-- FIXED: delete using form POST instead of fetch -->
+                        <form method="POST" action="admin/admin_delete_user.php" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                            <input type="hidden" name="user_id" value="${user.id}">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             `).join("");
-        })
-        .catch(err => console.error(err));
-}
-
-
-// ── Delete user: POST → remove row from table ─────────────────
-
-function deleteUser(userId) {
-    if (!confirm("Are you sure you want to delete this user?")) return;
-
-    const formData = new FormData();
-    formData.append("user_id", userId);
-
-    fetch("php/admin_delete_user.php", { method: "POST", body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById("user-row-" + userId).remove();
-            } else {
-                alert(data.message);
-            }
         })
         .catch(err => console.error(err));
 }
@@ -89,30 +75,19 @@ function loadPendingCourses() {
                 <div class="course-card" id="pending-card-${course.id}">
                     <h3>${course.title}</h3>
                     <p>${course.description}</p>
-                    <button onclick="reviewCourse(${course.id}, 'approved')">Approve</button>
-                    <button onclick="reviewCourse(${course.id}, 'rejected')">Reject</button>
+                    <!-- FIXED: approve/reject using forms instead of fetch -->
+                    <form method="POST" action="admin/admin_approve.php" style="display:inline;">
+                        <input type="hidden" name="course_id" value="${course.id}">
+                        <input type="hidden" name="status" value="approved">
+                        <button type="submit" class="btn-approve">Approve</button>
+                    </form>
+                    <form method="POST" action="admin/admin_approve.php" style="display:inline;">
+                        <input type="hidden" name="course_id" value="${course.id}">
+                        <input type="hidden" name="status" value="rejected">
+                        <button type="submit" class="btn-reject">Reject</button>
+                    </form>
                 </div>
             `).join("");
-        })
-        .catch(err => console.error(err));
-}
-
-
-// ── Approve / Reject: POST to admin_approve.php with status ───
-
-function reviewCourse(courseId, status) {
-    const formData = new FormData();
-    formData.append("course_id", courseId);
-    formData.append("status", status);
-
-    fetch("php/admin_approve.php", { method: "POST", body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById("pending-card-" + courseId).remove();
-            } else {
-                alert(data.message);
-            }
         })
         .catch(err => console.error(err));
 }
