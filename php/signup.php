@@ -2,6 +2,8 @@
 session_start();
 include 'db.php';
 
+header('Content-Type: application/json');  // ADDED: so JS can read the response
+
 $fname    = $_POST['fname'];
 $lname    = $_POST['lname'];
 $age      = $_POST['age'];
