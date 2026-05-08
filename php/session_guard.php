@@ -1,10 +1,17 @@
 <?php
-/*to use in ur file you just do:
+/*
+HOW TO USE IN YOUR FILE:
 <?php
 include '../php/db.php';
 include '../php/session_guard.php';
+// rest of your code
+?>
 
-rest of ur code
+FOR ROLE-SPECIFIC PAGES:
+Set $required_role BEFORE including this file:
+<?php
+$required_role = 'student';   // only students allowed
+include '../php/session_guard.php';
 ?>
 */
 
@@ -16,4 +23,12 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// ADDED: Check role if a specific role is required
+if (isset($required_role) && $_SESSION['role'] !== $required_role) {
+    // wrong role — send to their correct dashboard
+    if ($_SESSION['role'] == 'student')    header('Location: ../home.html');
+    if ($_SESSION['role'] == 'instructor') header('Location: ../instructor/dashboard.html');
+    if ($_SESSION['role'] == 'admin')      header('Location: ../admin/dashboard.html');
+    exit;
+}
 ?>
