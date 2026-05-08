@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Wallet</title>
-    <link rel="stylesheet" href="wallet.css">
+    <link rel="stylesheet" href="css/wallet.css">
 </head>
 <body>
 <div class="wallet-container">
     <h2> My Wallet</h2>
     <div class="card">
+        <!-- Balance will be loaded by JS -->
         <h4 id="balance">Balance: 0 EGP</h4>
     </div>
     <div class="card">
         <h4>Top Up wallet</h4>
-        <form id="walletForm">
+        <!-- CHANGED: added action and method, removed nested form -->
+        <form id="walletForm" action="php/topup.php" method="POST">
+
             <label>Card number</label>
-            <input type="text" name="card_number"  placeholder="Enter card number">
+            <input type="text" name="card_number" placeholder="Enter card number">
 
             <label> CVV</label>
             <input type="text" name="cvv" placeholder="Enter CVV">
 
             <label> Expiry date</label>
-            <input type="month"  name="expiry"  placeholder="Enter expiry date">
+            <input type="month" name="expiry" placeholder="Enter expiry date">
 
             <label> Amount</label>
             <input type="number" name="amount" placeholder="Enter amount">
-            <form method="POST" action="php/topup.php">
-                <button> Add Money </button>
-            </form>
+
+            <!-- CHANGED: single submit button, no nested form -->
+            <button type="submit"> Add Money </button>
+
         </form>
     </div>
 </div>
