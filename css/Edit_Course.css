@@ -1,8 +1,3 @@
-/* ============================================
-   editcourse.css — Instructor Edit Course
-   Used by: editcourse.html
-   ============================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -15,15 +10,11 @@ body {
     color: #333;
     padding: 30px 20px;
 }
-
-/* ── Page Title ──────────────────────────────── */
 h1 {
     font-size: 24px;
     color: #1a3a8a;
     margin-bottom: 20px;
 }
-
-/* ── Form ────────────────────────────────────── */
 form {
     background-color: white;
     border: 1px solid #ddd;
@@ -67,8 +58,6 @@ select:focus {
 textarea {
     resize: vertical;
 }
-
-/* ── Submit Button ───────────────────────────── */
 button[type="submit"] {
     background-color: #1a3a8a;
     color: white;

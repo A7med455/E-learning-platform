@@ -1,8 +1,3 @@
-/* ============================================
-   Admin_Dashboard.css — Admin Dashboard Page
-   Used by: Admin_Dashboard.html
-   ============================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -14,8 +9,6 @@ body {
     background-color: #f5f5f5;
     display: flex;
 }
-
-/* ── Sidebar ─────────────────────────────────── */
 .sidebar {
     width: 220px;
     min-height: 100vh;
@@ -47,15 +40,11 @@ body {
     background-color: #2e7cf6;
     color: white;
 }
-
-/* ── Main Content ────────────────────────────── */
 .main-content {
     margin-left: 220px;
     padding: 30px;
     width: 100%;
 }
-
-/* ── Header ──────────────────────────────────── */
 .header {
     margin-bottom: 25px;
 }
@@ -70,8 +59,6 @@ body {
     font-size: 14px;
     margin-top: 4px;
 }
-
-/* ── Stat Cards ──────────────────────────────── */
 .stats {
     display: flex;
     gap: 20px;
@@ -99,8 +86,6 @@ body {
     font-size: 14px;
     color: #666;
 }
-
-/* ── Table Card ──────────────────────────────── */
 .table-card {
     background-color: white;
     border: 1px solid #ddd;
@@ -133,8 +118,6 @@ table td {
     font-size: 14px;
     color: #444;
 }
-
-/* ── Status Badges ───────────────────────────── */
 .status {
     padding: 3px 10px;
     border-radius: 12px;
